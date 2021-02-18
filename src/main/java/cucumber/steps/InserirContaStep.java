@@ -59,7 +59,7 @@ public class InserirContaStep {
         menu.accessAccountOptionAdd();
     }
 
-    @Quando("informo a conta {string}")
+    @Quando("informo a conta (.*)?$")
     public void informoAConta(String accountName) {
         accountPage.insertAccountName(accountName);
     }
@@ -67,6 +67,17 @@ public class InserirContaStep {
     @Quando("seleciono Salvar")
     public void selecionoSalvar() {
         accountPage.clickButtonSalvar();
+    }
+
+    @Então("^recebo a mensagem (.*)?$")
+    public void receboAMensagem(String msgExpected) {
+        String msgAlert = accountPage.getMessageAlertGeneric();
+        try {
+            Assert.assertEquals(msgExpected, msgAlert);
+        } catch (NoSuchElementException e) {
+            String elementNotfound = e.getMessage().substring(42, 110);
+            throw new ElementNotFoundException("Elemento não encontrado: " + elementNotfound);
+        }
     }
 
     @Então("a conta é inserida com sucesso")

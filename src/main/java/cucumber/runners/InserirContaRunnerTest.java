@@ -13,7 +13,8 @@ import selenium.pages.LoginPage;
         glue = "cucumber.steps",
         tags = ("not @ignore"),
         plugin = {"pretty", "html:target/tests-report.html"},
-        snippets = CucumberOptions.SnippetType.CAMELCASE
+        snippets = CucumberOptions.SnippetType.CAMELCASE,
+        dryRun = false
 )
 public class InserirContaRunnerTest {
 

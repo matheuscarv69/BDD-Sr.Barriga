@@ -25,4 +25,8 @@ public class AccountPage extends BasePage {
         return getTextComponent(By.xpath(".//div[@class='alert alert-success']"));
     }
 
+    public String getMessageAlertGeneric() {
+        return getTextComponent(By.xpath(".//div[starts-with(@class,'alert alert-')]"));
+    }
+
 }
