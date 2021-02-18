@@ -1,17 +1,25 @@
 package cucumber.steps;
 
 import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
+import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import selenium.exceptions.ElementNotFoundException;
 import selenium.exceptions.LoginException;
 import selenium.pages.AccountPage;
 import selenium.pages.LoginPage;
 import selenium.pages.MenuPage;
 
+import java.io.File;
+import java.io.IOException;
+
+import static selenium.core.DriverFactory.getDriver;
 import static selenium.core.DriverFactory.killDriver;
 
 public class InserirContaStep {
@@ -111,7 +119,19 @@ public class InserirContaStep {
         }
     }
 
-    @After
+    // order 1 - executa antes do 0
+    @After(order = 1)
+    public void takeScreenshot(Scenario scenario) {
+        File file = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
+        try {
+            FileUtils.copyFile(file, new File("target/screenshots/" + scenario.getName() + ".jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // order 0 - executa depois do 1
+    @After(order = 0)
     public void finalizeStep() {
         killDriver();
     }
