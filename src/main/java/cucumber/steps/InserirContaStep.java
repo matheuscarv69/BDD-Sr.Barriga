@@ -42,9 +42,9 @@ public class InserirContaStep {
 
     @Então("visualizo a página inicial")
     public void visualizoAPáginaInicial() {
-        try{
+        try {
             Assert.assertTrue(accountPage.getMessageAlertWelcomeSucess().contains("Bem vindo"));
-        }catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             throw new LoginException("Não foi possível acessar a página home, verifique as credenciais");
         }
     }
@@ -84,6 +84,16 @@ public class InserirContaStep {
     public void souNotificadoQueONomeDaContaÉObrigatório() {
         try {
             Assert.assertEquals("Informe o nome da conta", accountPage.getMessageErrorInsertAccount());
+        } catch (NoSuchElementException e) {
+            String elementNotfound = e.getMessage().substring(42, 110);
+            throw new ElementNotFoundException("Elemento não encontrado: " + elementNotfound);
+        }
+    }
+
+    @Então("sou notificado que já existe uma conta com esse nome")
+    public void souNotificadoQueJáExisteUmaContaComEsseNome() {
+        try {
+            Assert.assertEquals("Já existe uma conta com esse nome!", accountPage.getMessageErrorInsertAccount());
         } catch (NoSuchElementException e) {
             String elementNotfound = e.getMessage().substring(42, 110);
             throw new ElementNotFoundException("Elemento não encontrado: " + elementNotfound);

@@ -19,8 +19,8 @@ Funcionalidade: Cadastro de contas
 
   Cenário: Não deve inserir uma conta sem nome
     Dado que estou acessando a aplicação
-    Quando informo o usuário "a@a"
-    E a senha "a"
+    Quando informo o usuário "matheus69@gmail.com"
+    E a senha "1111"
     E seleciono entrar
     Então visualizo a página inicial
     Quando seleciono Contas
@@ -28,11 +28,10 @@ Funcionalidade: Cadastro de contas
     E seleciono Salvar
     Então sou notificado que o nome da conta é obrigatório
 
-  @ignore
   Cenário: Não deve inserir uma conta com nome já existente
     Dado que estou acessando a aplicação
-    Quando informo o usuário "a@a"
-    E a senha "a"
+    Quando informo o usuário "matheus69@gmail.com"
+    E a senha "1111"
     E seleciono entrar
     Então visualizo a página inicial
     Quando seleciono Contas
