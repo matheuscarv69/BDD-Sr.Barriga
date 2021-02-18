@@ -8,22 +8,16 @@ public class MenuPage extends BasePage {
         clickLink("Home");
     }
 
-    public void accessScreenInsertAccount() {
+    public void accessAccountOption() {
         clickLink("Contas");
+    }
+
+    public void accessAccountOptionAdd() {
         clickLink("Adicionar");
     }
 
-    public void accessScreenAccountOptions() {
-        clickLink("Contas");
+    public void accessAccountOptionLister() {
         clickLink("Listar");
-    }
-
-    public void accessScreenCreateMovement() {
-        clickLink("Criar Movimentação");
-    }
-
-    public void accessScreenMonthlySummary() {
-        clickLink("Resumo Mensal");
     }
 
 }

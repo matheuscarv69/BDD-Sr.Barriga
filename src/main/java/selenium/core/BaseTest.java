@@ -37,7 +37,7 @@ public class BaseTest {
     }
 
     @After
-    public void finalizeWebDriver() throws IOException {
+    public static void finalizeWebDriver() throws IOException {
 //        Arrumar isso
 //        TakesScreenshot ss = (TakesScreenshot) getDriver();
 //        File arquivo = ss.getScreenshotAs(OutputType.FILE);

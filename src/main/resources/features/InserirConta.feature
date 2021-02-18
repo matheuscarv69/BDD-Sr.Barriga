@@ -7,8 +7,8 @@ Funcionalidade: Cadastro de contas
 
   Cenário: Deve inserir uma conta com sucesso
     Dado que estou acessando a aplicação
-    Quando informo o usuário "a@a"
-    E a senha "a"
+    Quando informo o usuário "matheus69@gmail.com"
+    E a senha "1111"
     E seleciono entrar
     Então visualizo a página inicial
     Quando seleciono Contas
