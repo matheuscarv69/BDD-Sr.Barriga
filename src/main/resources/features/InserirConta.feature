@@ -17,7 +17,6 @@ Funcionalidade: Cadastro de contas
     E seleciono Salvar
     Então a conta é inserida com sucesso
 
-  @ignore
   Cenário: Não deve inserir uma conta sem nome
     Dado que estou acessando a aplicação
     Quando informo o usuário "a@a"

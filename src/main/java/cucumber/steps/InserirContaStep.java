@@ -7,6 +7,7 @@ import io.cucumber.java.pt.Quando;
 import org.junit.Assert;
 import org.openqa.selenium.NoSuchElementException;
 import selenium.exceptions.ElementNotFoundException;
+import selenium.exceptions.LoginException;
 import selenium.pages.AccountPage;
 import selenium.pages.LoginPage;
 import selenium.pages.MenuPage;
@@ -41,11 +42,10 @@ public class InserirContaStep {
 
     @Então("visualizo a página inicial")
     public void visualizoAPáginaInicial() {
-        try {
-            Assert.assertEquals("Bem vindo, matheuscarv69!", accountPage.getMessageAlertWelcomeSucess());
-        } catch (NoSuchElementException e) {
-            String elementNotfound = e.getMessage().substring(42, 110);
-            throw new ElementNotFoundException("Elemento não encontrado: " + elementNotfound);
+        try{
+            Assert.assertTrue(accountPage.getMessageAlertWelcomeSucess().contains("Bem vindo"));
+        }catch (NoSuchElementException e){
+            throw new LoginException("Não foi possível acessar a página home, verifique as credenciais");
         }
     }
 
@@ -73,6 +73,17 @@ public class InserirContaStep {
     public void aContaÉInseridaComSucesso() {
         try {
             Assert.assertEquals("Conta adicionada com sucesso!", accountPage.getMessageInsertAccountSucess());
+        } catch (NoSuchElementException e) {
+            String elementNotfound = e.getMessage().substring(42, 110);
+            throw new ElementNotFoundException("Elemento não encontrado: " + elementNotfound);
+        }
+    }
+
+
+    @Então("sou notificado que o nome da conta é obrigatório")
+    public void souNotificadoQueONomeDaContaÉObrigatório() {
+        try {
+            Assert.assertEquals("Informe o nome da conta", accountPage.getMessageErrorInsertAccount());
         } catch (NoSuchElementException e) {
             String elementNotfound = e.getMessage().substring(42, 110);
             throw new ElementNotFoundException("Elemento não encontrado: " + elementNotfound);
