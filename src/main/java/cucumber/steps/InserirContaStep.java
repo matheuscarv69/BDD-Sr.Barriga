@@ -41,7 +41,12 @@ public class InserirContaStep {
 
     @Então("visualizo a página inicial")
     public void visualizoAPáginaInicial() {
-        menu.accessScreenHome();
+        try {
+            Assert.assertEquals("Bem vindo, matheuscarv69!", accountPage.getMessageAlertWelcomeSucess());
+        } catch (NoSuchElementException e) {
+            String elementNotfound = e.getMessage().substring(42, 110);
+            throw new ElementNotFoundException("Elemento não encontrado: " + elementNotfound);
+        }
     }
 
     @Quando("seleciono Contas")

@@ -27,7 +27,7 @@ Funcionalidade: Cadastro de contas
     Quando seleciono Contas
     E seleciono Adicionar
     E seleciono Salvar
-    Então sou notificar que o nome da conta é obrigatório
+    Então sou notificado que o nome da conta é obrigatório
 
   @ignore
   Cenário: Não deve inserir uma conta com nome já existente
