@@ -17,8 +17,6 @@ import selenium.pages.LoginPage;
 )
 public class InserirContaRunnerTest {
 
-
-
     @BeforeClass
     public static void reset(){
 
@@ -30,7 +28,6 @@ public class InserirContaRunnerTest {
 
         HomePage homePage = new HomePage();
         homePage.clickButtonReset();
-
     }
 
 }
