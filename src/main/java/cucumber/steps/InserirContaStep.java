@@ -67,7 +67,7 @@ public class InserirContaStep {
         menu.accessAccountOptionAdd();
     }
 
-    @Quando("informo a conta (.*)?$")
+    @Quando("^informo a conta (.*)?$")
     public void informoAConta(String accountName) {
         accountPage.insertAccountName(accountName);
     }
